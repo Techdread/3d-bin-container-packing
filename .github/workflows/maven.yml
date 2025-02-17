@@ -3,11 +3,10 @@
 
 name: Java CI with Maven
 on:
-  workflow dispatch
-on:
+  workflow_dispatch:  # Corrected: workflow_dispatch (no space)
   push:
-    branches: [ '**' ]
-
+    branches:
+      - '**'  # This is correct for matching all branches
 jobs:
   build:
     runs-on: ubuntu-latest
