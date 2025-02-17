@@ -1,9 +1,9 @@
 name: Java CI with Maven
 on:
-  workflow_dispatch:  # Corrected: workflow_dispatch (no space)
+  workflow_dispatch:
   push:
     branches:
-      - '**'  # This is correct for matching all branches
+      - '**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,10 +19,10 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
         distribution: 'liberica'
-        cache: 'maven'  # This single line handles caching.
+        cache: 'maven'
 
-    - name: Adjust memory use for Maven
-      run: echo "MAVEN_OPTS='-Xmx2g'" >> $GITHUB_ENV  # Use $GITHUB_ENV
+    - name: Adjust memory use for Maven (Corrected)
+      run: echo "MAVEN_OPTS=-Xmx2g" >> $GITHUB_ENV  # Removed quotes around the value
 
     - name: Build with Maven
-      run: mvn -B verify --no-transfer-progress # -B and --no-transfer-progress
+      run: mvn -B verify --no-transfer-progress
